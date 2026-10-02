@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #F7F6F3;
+  --surface: #FFFFFF;
+  --surface-muted: #FBFAF8;
+  --border: #E9E7E2;
+  --border-strong: #DAD7D0;
+  --text: #1F1E1D;
+  --text-secondary: #6E6B66;
+  --text-muted: #9A968F;
+  --primary: #1A1917;
+  --primary-hover: #2E2C29;
+  --on-primary: #FFFFFF;
+  --accent: #C96442;
+  --accent-hover: #B5573A;
+  --focus-ring: rgba(201, 100, 66, 0.35);
+  --success: #4F7A52;
+  --danger: #B3503E;
+  --warning: #B5852E;
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 14px;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.dark {
+  --bg: #1F1E1D;
+  --surface: #262624;
+  --surface-muted: #2B2A28;
+  --border: #3A3836;
+  --border-strong: #4A4744;
+  --text: #ECEAE3;
+  --text-secondary: #A8A39B;
+  --text-muted: #7C776F;
+  --primary: #E8E6E0;
+  --primary-hover: #FFFFFF;
+  --on-primary: #1F1E1D;
+  --accent: #D2734F;
+  --accent-hover: #E0805B;
+  --focus-ring: rgba(210, 115, 79, 0.40);
+  --success: #6FA873;
+  --danger: #D27059;
+  --warning: #D6A24A;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.30);
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.40);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-text: var(--text);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-on-primary: var(--on-primary);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-feature-settings: "cv11";
+}
+
+/* Spotlight Card — cursor-following glow */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --spotlight-color: rgba(210, 115, 79, 0.08);
+}
+
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    250px circle at var(--mouse-x) var(--mouse-y),
+    var(--spotlight-color),
+    transparent 80%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spotlight-card::before {
+    display: none;
+  }
+}
